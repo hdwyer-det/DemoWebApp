@@ -13,3 +13,11 @@ def check_login(email, password):
         return False
     else:
         return True
+    
+
+def listExtension():
+    con = sql.connect(".database/database.db")
+    cur = con.cursor()
+    data = cur.execute('SELECT * FROM extension').fetchall()
+    con.close()
+    return data

@@ -30,8 +30,14 @@ def index_page():
 # Define the route for the display page
 @app.route("/display.html", methods=["GET"])
 def display_page():
-    return render_template("display.html"), 200
+    data = db.listExtension()
+    return render_template("display.html", content=data), 200
 
+# Define the route for the arguments page
+@app.route("/arguments.html", methods=["GET"])
+def arguments_page():
+    pageVer = request.args.get("ver", "default")
+    return render_template("arguments.html", pageVersion=pageVer), 200
 
 # Initialise the Flask application
 if __name__ == "__main__":
