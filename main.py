@@ -14,6 +14,8 @@ app = Flask(__name__)
 @app.route("/index.html", methods=["GET", "POST"])
 def index_page():
     global is_logged_in
+
+    # If a post method, attempt to log them in
     if request.method == "POST":
         email = request.form["email"]
         password = request.form["password"]
@@ -22,6 +24,8 @@ def index_page():
             app.logger.critical(f"{email} has logged in")
         else:
             app.logger.critical(f"{email} has failed to log in")
+
+    # If a get method, reset to log them out
     else:
         is_logged_in = False
     return render_template("index.html", is_logged_in=is_logged_in), 200
