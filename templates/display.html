@@ -1,12 +1,14 @@
 {% extends 'layout.html' %}
 {% block content %}
 <div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-gap-3">
 {% for row in content %}
+<div class="col">
 <div class="card h-100">
   <div class="card-header">
     {{ row[1] }}
     </div>
-  <div class="card-body" style="width: 18rem;">
+  <div class="card-body" >
       <img src="{{ row[4] }}" class="card-img-top" alt="Product image for the {{ row[1] }} VSCode extension.">
       <div class="card-body">
         <p class="card-text">{{ row[3] }}</p>
@@ -14,6 +16,8 @@
       </div>
     </div>
   </div>
+</div>
 {% endfor %}
+  </div>
 </div>
 {% endblock %}
