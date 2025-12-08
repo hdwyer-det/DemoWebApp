@@ -2,6 +2,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 import database_interface as db
+import database_ORM_interface as dbORM
 
 # Global variables
 is_logged_in = False
@@ -36,6 +37,12 @@ def index_page():
 def display_page():
     data = db.listExtension()
     return render_template("display.html", content=data), 200
+
+# Define the route for the display ORM page
+@app.route("/displayORM.html", methods=["GET"])
+def display_ORM_page():
+    data = dbORM.listExtensionORM()
+    return render_template("displayORM.html", content=data), 200
 
 # Define the route for the arguments page
 @app.route("/arguments.html", methods=["GET"])

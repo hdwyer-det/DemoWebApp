@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-gap-3">
+{%  for ext in content %}
+<div class="col">
+<div class="card h-100">
+  <div class="card-header">
+    {{ ext.name }}
+    </div>
+  <div class="card-body" >
+      <img src="{{ ext.image }}" class="card-img-top" alt="Product image for the {{ ext.name }} VSCode extension.">
+      <div class="card-body">
+        <p class="card-text">{{ ext.about }}</p>
+        <a href="{{ ext.hyperlink }}" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+  </div>
+</div>
+{% endblock %}
